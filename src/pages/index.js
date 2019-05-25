@@ -35,7 +35,7 @@ const IndexPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (newQuery === 'city') {
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},US&units=imperial&APPID=1e27bc4aba797f72503f9b125be36e4b`)
+        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},US&units=imperial&APPID=${API_KEY}`)
         if (result.ok) {
           const data = await result.json()
           setData(data)
@@ -46,7 +46,7 @@ const IndexPage = () => {
       }
 
       if (newQuery === 'coordinates') {
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.values.latitude}&lon=${coordinates.values.longitude}&units=imperial&APPID=1e27bc4aba797f72503f9b125be36e4b`)
+        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.values.latitude}&lon=${coordinates.values.longitude}&units=imperial&APPID=${API_KEY}`)
         if (result.ok) {
           const data = await result.json()
           setData(data)
@@ -57,7 +57,7 @@ const IndexPage = () => {
       }
 
       if (newQuery === 'zip') {
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},US&units=imperial&APPID=1e27bc4aba797f72503f9b125be36e4b`)
+        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},US&units=imperial&APPID=${API_KEY}`)
         if (result.ok) {
           const data = await result.json()
           setData(data)
@@ -69,7 +69,7 @@ const IndexPage = () => {
 
       if (Object.entries(currentPosition).length === 0 || Object.entries(data).length > 0) return
 
-      const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&units=imperial&APPID=1e27bc4aba797f72503f9b125be36e4b`)
+      const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${currentPosition.latitude}&lon=${currentPosition.longitude}&units=imperial&APPID=${API_KEY}`)
       if (result.ok) {
         const data = await result.json()
         setData(data)
